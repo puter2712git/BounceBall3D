@@ -7,17 +7,15 @@ public class CameraController : MonoBehaviour {
 
 	private float m_xRotateMove;
 
-	public float m_mouseSensitivity = 5000000000.0f;
+	public float m_mouseSensitivity = 500.0f;
 
   void Update(){
 		m_xRotateMove = Input.GetAxis("Mouse X") * Time.deltaTime * m_mouseSensitivity;
 
 		Vector3 ballPosition = m_player.transform.position;
 
-		transform.RotateAround(ballPosition, Vector3.up, m_xRotateMove);
-
 		transform.LookAt(ballPosition);
 
-		m_player.transform.rotation = Quaternion.identity;
+		m_player.transform.Rotate(new Vector3(0, m_xRotateMove, 0));
   }
 }
