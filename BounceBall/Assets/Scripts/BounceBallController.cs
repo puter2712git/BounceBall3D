@@ -13,8 +13,11 @@ public class BounceBallController : MonoBehaviour
 	private float m_horizontalSpeed;
 	private float m_verticalSpeed;
 
-	private float m_speed = 3f;
+	private float m_speed = 4f;
   private float m_jump = 8f;
+
+  public AudioClip m_normalGroundLanded;
+  public AudioClip m_jumpGroundLanded;
 
   void Start() {
     Time.timeScale = 2f;
@@ -46,9 +49,12 @@ public class BounceBallController : MonoBehaviour
 
     if (CheckTypeOfGround(other, "NormalGround") && other.contacts[0].normal.y > 0.7f) {
       m_rigidbody.AddForce(jumpVelocity, ForceMode.Impulse);
+      m_audioSource.PlayOneShot(m_normalGroundLanded);
     }
-
-    m_audioSource.Play();
+    else if (CheckTypeOfGround(other, "JumpGround") && other.contacts[0].normal.y > 0.7f) {
+      m_rigidbody.AddForce(jumpVelocity * 1.5f, ForceMode.Impulse);
+      m_audioSource.PlayOneShot(m_jumpGroundLanded);
+    }
   }
 
   private bool CheckTypeOfGround(Collision other, string tagName) {
