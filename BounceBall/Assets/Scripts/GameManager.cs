@@ -11,7 +11,7 @@ public class GameManager {
    */
   public static GameManager Instance {
     get {
-      if (null == instance) {
+      if (instance == null) {
         instance = new GameManager();
       }
 
