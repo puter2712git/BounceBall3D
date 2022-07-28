@@ -19,7 +19,13 @@ public class GameManager {
     }
   }
 
+  public bool isPlaying = false;
+
   public void DoubleGameSpeed() {
     Time.timeScale = 2f;
+  }
+
+  public void PauseGame() {
+    Time.timeScale = Time.timeScale == 0 ? 2 : 0;
   }
 }

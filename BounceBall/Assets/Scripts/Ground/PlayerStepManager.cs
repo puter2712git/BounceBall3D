@@ -16,6 +16,6 @@ public class PlayerStepManager {
   }
 
   public bool IsPlayerStepped(Collision other) {
-    return (other.gameObject.CompareTag("Player") && other.contacts[0].normal.y > 0.5f);
+    return (other.gameObject.CompareTag("Player") && other.contacts[0].normal.y == -1.0f);
   }
 }
