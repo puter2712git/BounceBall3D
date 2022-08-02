@@ -20,6 +20,7 @@ public class GameManager {
   }
 
   public bool isPlaying = false;
+  public bool isPlayerDead = false;
 
   public void DoubleGameSpeed() {
     Time.timeScale = 2f;
@@ -27,5 +28,13 @@ public class GameManager {
 
   public void PauseGame() {
     Time.timeScale = Time.timeScale == 0 ? 2 : 0;
+  }
+
+  public void PlayerDied() {
+    
+  }
+
+  public void StageClear() {
+
   }
 }
