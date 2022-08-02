@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class GameManager {
   private static GameManager instance; // Singleton Variable
@@ -18,9 +19,12 @@ public class GameManager {
       return instance;
     }
   }
+  public Dictionary<string, int> starCountDictionary = new Dictionary<string, int>();
+  public int eatStarCount = 0;
 
   public bool isPlaying = false;
   public bool isPlayerDead = false;
+  public bool isStageCleared = false;
 
   public void DoubleGameSpeed() {
     Time.timeScale = 2f;
@@ -31,10 +35,16 @@ public class GameManager {
   }
 
   public void PlayerDied() {
-    
+    SceneManager.LoadScene(SceneManager.GetActiveScene().name);
+    isPlayerDead = false;
+    eatStarCount = 0;
+  }
+
+  public void EatAllStars() {
+    isStageCleared = true;
   }
 
   public void StageClear() {
-
+    SceneManager.LoadScene("Stage Clear Scene");
   }
 }

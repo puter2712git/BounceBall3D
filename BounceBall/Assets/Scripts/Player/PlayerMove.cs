@@ -29,7 +29,7 @@ public class PlayerMove : MonoBehaviour {
   private void Move() {
     Vector3 velocity;
 
-    if (m_horizontalSpeed != 0 || m_verticalSpeed != 0) {
+    if ((m_horizontalSpeed != 0 || m_verticalSpeed != 0) && !GameManager.Instance.isPlayerDead) {
       velocity = new Vector3(m_verticalSpeed, 0f, m_horizontalSpeed);
       
       m_rigidbody.transform.Translate(velocity * Time.fixedDeltaTime);

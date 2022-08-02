@@ -12,8 +12,10 @@ public class PlayerInput : MonoBehaviour {
 	public float mouseXMove { private set; get; }
 
 	private void Update() {
-		horizontalAxisMove = Input.GetAxis(m_horizontalAxisName);
-		verticalAxisMove = Input.GetAxis(m_verticalAxisName);
-		mouseXMove = Input.GetAxis(m_mouseXName);
+		if (!GameManager.Instance.isPlayerDead) {
+			horizontalAxisMove = Input.GetAxis(m_horizontalAxisName);
+			verticalAxisMove = Input.GetAxis(m_verticalAxisName);
+			mouseXMove = Input.GetAxis(m_mouseXName);
+		}
 	}
 }

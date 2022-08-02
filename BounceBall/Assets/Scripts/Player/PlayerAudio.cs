@@ -7,6 +7,7 @@ public class PlayerAudio : MonoBehaviour {
 
   public AudioClip m_starCaughtSound;
   public AudioClip m_normalGroundSound;
+  public AudioClip m_playerDeadSound;
 
   private void Awake() {
     m_playerAudioSource = GetComponent<AudioSource>();
@@ -15,6 +16,10 @@ public class PlayerAudio : MonoBehaviour {
   private void OnTriggerEnter(Collider other) {
     if (other.gameObject.name.Equals("Star")) {
       m_playerAudioSource.PlayOneShot(m_starCaughtSound);
+    }
+
+    else {
+      m_playerAudioSource.PlayOneShot(m_playerDeadSound);
     }
   }
 
